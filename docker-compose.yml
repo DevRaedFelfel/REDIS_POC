@@ -1,0 +1,15 @@
+version: "3.0"
+services:
+  redis-server:
+    container_name: redis_server
+    image: redis:latest
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_REPLICATION_NODE=redis_admin
+      - REDIS_PASSWORD=admin_key
+    networks:
+      - redis-net
+networks:
+  redis-net:
+    driver: bridge
